@@ -1,0 +1,32 @@
+@import '../../styles/global';
+
+.cardPokemonDetail {
+
+  &__types {
+    border-radius: 8px;
+    color: $white-color;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+    padding: 8px;
+  }
+
+  &__moves {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__movesTitle {
+    background-color: $siena-color;
+    color: $white-color;
+    font-weight: bold;
+  }
+
+  &__movesItem {
+    list-style: none;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 8px;
+    border: 1px solid $black-color;
+  }
+}

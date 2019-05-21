@@ -1,0 +1,60 @@
+@keyframes spinning {
+  0% {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(325deg);
+    -webkit-transform: rotate(325deg);
+  }
+  100% {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+}
+
+.spinnerContainer {
+	width: 10em;
+	height: 10em;
+	margin: 10px auto 70px;
+	position: relative;
+  animation: translating 5s infinite;
+  
+  &__pokeballContainer {
+    border: 1px solid lightgrey;
+    border-radius: 50%;
+    width: 10em;
+    height: 10em;
+    margin: 20px auto;
+    animation: spinning 5s infinite;
+  }
+
+  &__pokeball {
+    width: 10em;
+    height: 10em;
+    background-color: #fff;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__pokeballDetails {
+    width: 10em;
+    height: 1em;
+    background-color: #333;
+    position: absolute;
+    top: 4.5em;
+
+    &:before {
+      content: '';
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    background-color: #333;
+    position: absolute;
+    top: -1.25em;
+    left: 3.25em;
+    z-index: 200;
+    }
+  }
+}

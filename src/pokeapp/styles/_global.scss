@@ -1,0 +1,38 @@
+// variable used to style the app
+
+$primary-red-color: #ef534f;
+$secondary-red-color: #c4423f;
+$red-alert: #ec3d3b;
+$siena-color: '#b04632';
+$silver-gray-color: #bbbebb;
+$dark-gray-color: #8a8a8a;
+$darker-gray-color: #808080;
+$white-color: white;
+$black-color: black;
+
+// Mixin to use a standar media query for small screen
+@mixin onSmallScreen {
+  @media only screen and (max-width: 1224px) {
+    @content;
+  }
+}
+
+// Mixin to use a standar media query for tablets
+@mixin onTablet {
+  @media only screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+// Mixin to use a standar media query for tablets in portrait
+@mixin onTabletPortrait {
+  @media only screen and (max-width: 500px) {
+    @content;
+  }
+}
+// Mixin to use a standar media query for cellphones
+@mixin onCellPhone {
+  @media only screen and (max-width: 320px) {
+    @content;
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../styles/global';
+
+.formErrors {
+
+  li{
+    font-weight: bold;
+    color: $primary-red-color;
+  }
+}
