@@ -70,8 +70,8 @@
     &:focus{
       box-shadow:0px 2px 4px 0px rgba(0,0,0,0.08);
       transform:scale(1.03,1.03);
-      border:2px solid #B2EBF2 !important;
-      color: #00838F;
+      border:2px solid $dark-gray-color;
+      color: $dark-gray-color;
     }
   }
   
