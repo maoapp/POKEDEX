@@ -7,25 +7,26 @@ import PokemonDetailCard from '../components/pokemonDetailCard/PokemonDetailCard
 import Spinner from '../components/spinner/Spinner';
 
 class PokemonDetail extends React.Component {
-  constructor() {
-    super();
-
-  }
-
-  async componentDidMount() {
-    const { fetchPokemonDetail, match } = this.props;
+  componentDidMount() {
+    const { fetchPokemonDetail, match, isLogged, history } = this.props;
     const { index } = match.params;
+
+    if(!isLogged) {
+      history.push('/login');
+    }
 
     fetchPokemonDetail(index);
   }
 
   render() {
-    const { pokemonDetail } = this.props;
-    let content = <Spinner />;
+    const { pokemonDetail, pokemonEvolutionChain } = this.props;
+    const { data } = pokemonDetail;
+    const evolutionChain = pokemonEvolutionChain.data;
 
-    if(pokemonDetail.data) {
+    let content = <Spinner />;
+    if(data) {
       content = (
-        <PokemonDetailCard {...{...pokemonDetail.data}} />
+        <PokemonDetailCard {...{...data, evolutionChain}} />
       )
     } 
 

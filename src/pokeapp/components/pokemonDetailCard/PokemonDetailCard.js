@@ -8,34 +8,28 @@ import { TYPES_COLORS } from '../../constants/constants';
 // @styles
 import './PokemonDetail.scss';
 
-const PokemonDetailCard = ({id, name, sprites, height, types, weight, moves}) => (
+const PokemonDetailCard = ({evolutionChain, id, name, sprites, height, types, weight, moves}) => (
   <div className="card cardPokemonDetail">
-    <div className="card-header">
-      <div className="row">
-        <div className="col-5">
-          <h5>{id}</h5>
+    <div className="card-header cardPokemonDetail__header">
+      <h5>{id}</h5>
+        <div className="float-right">
+          {types.map(type => 
+            <span 
+              key={type.type.name} 
+              className="cardPokemonDetail__types"
+              style={{backgroundColor: `#${TYPES_COLORS[type.type.name]}`}}
+            >
+              {type.type.name}
+            </span>)}
         </div>
-        <div className="col-7">
-          <div className="float-right">
-            {types.map(type => 
-              <span 
-                key={type.type.name} 
-                className="cardPokemonDetail__types"
-                style={{backgroundColor: `#${TYPES_COLORS[type.type.name]}`}}
-              >
-                {type.type.name}
-              </span>)}
-          </div>
-        </div>
-      </div>
     </div>
     <div className="card-body">
       <div className="align-items-center">
         <img src={sprites.front_default} alt="pokemon__picture"/>      
       </div>
-      <h4 className="">{name}</h4> 
-      <h5>height: {height}</h5> 
-      <h5>weight: {weight}</h5> 
+      <h3 className="cardPokemonDetail__name">{name}</h3> 
+      <h5 className="cardPokemonDetail__physicalInfoTitle">height: {height}</h5> 
+      <h5 className="cardPokemonDetail__physicalInfoTitle">weight: {weight}</h5> 
       <h5 className="cardPokemonDetail__movesTitle">Available moves:</h5>
       <div className="cardPokemonDetail__moves">
         {moves.map(item => 
@@ -43,7 +37,14 @@ const PokemonDetailCard = ({id, name, sprites, height, types, weight, moves}) =>
             {item.move.name}
           </li>
         )}        
-      </div>       
+      </div>  
+      <div className="cardPokemonDetail__evolution">
+        <h5 className="cardPokemonDetail__evolutionTitle">Evolution Chain</h5>
+        {evolutionChain ? evolutionChain.map(evolution => 
+          <li key={evolution.species_name} className="cardPokemonDetail__evolutionsItem">
+            {evolution.species_name}
+          </li>) : 'no hay evolucion disponible'}
+      </div>    
     </div>
   </div>
 );
@@ -52,9 +53,9 @@ PokemonDetailCard.propTypes = {
   id: PropTypes.number, 
   name: PropTypes.string,
   sprites: PropTypes.object, 
-  height: PropTypes.string, 
+  height: PropTypes.number, 
   types: PropTypes.array,
-  weight: PropTypes.string, 
+  weight: PropTypes.number, 
   moves: PropTypes.array
 };
 

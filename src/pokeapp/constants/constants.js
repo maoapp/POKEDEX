@@ -1,7 +1,9 @@
 const API_URL = 'https://pokeapi.co/api/v2';
 const ENDPOINTS = {
   POKEMONS: 'pokemon',
-  POKEMON_DETAIL: 'pokemon/{index}'
+  POKEMON_DETAIL: 'pokemon/{index}',
+  POKEMON_EVOLUTION_CHAIN: 'evolution-chain/{index}',
+  POKEMON_SPECIES: 'pokemon-species/{index}'
 };
 const LIMIT = 50;
 const TYPES_COLORS = {
@@ -25,10 +27,15 @@ const TYPES_COLORS = {
 	water: '3295F6'
 }
 
+const TIMEOUT_SCROLL = 700;
+const TOTAL_POKEMONS = 964;
+
 
 export {
   API_URL,
   ENDPOINTS,
   LIMIT,
-  TYPES_COLORS
+  TYPES_COLORS,
+  TIMEOUT_SCROLL,
+  TOTAL_POKEMONS
 }

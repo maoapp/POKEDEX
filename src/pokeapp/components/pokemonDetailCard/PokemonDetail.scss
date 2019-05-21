@@ -1,7 +1,7 @@
 @import '../../styles/global';
 
 .cardPokemonDetail {
-
+  background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(167,27,27,1) 0%, rgba(54,144,162,1) 100%);
   &__types {
     border-radius: 8px;
     color: $white-color;
@@ -11,15 +11,20 @@
     padding: 8px;
   }
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
   &__moves {
     display: flex;
     flex-wrap: wrap;
   }
 
   &__movesTitle {
-    background-color: $siena-color;
-    color: $white-color;
     font-weight: bold;
+    color: $primary-gray-color;
+    margin-top: 30px;
   }
 
   &__movesItem {
@@ -28,5 +33,42 @@
     margin: 5px;
     border-radius: 8px;
     border: 1px solid $black-color;
+    color: $primary-gray-color;
+  }
+
+  &__name {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  &__physicalInfoTitle {
+    font-weight: bold;
+  }
+
+  &__evolution {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__evolutionTitle {
+    font-weight: bold;
+    color: $primary-gray-color;
+    margin-top: 20px;
+  }
+
+  &__evolutionsItem {
+    font-weight: bold;
+    border: 1px solid $black-color;
+    margin: 5px;
+    border-radius: 8px;
+    list-style: none;
+    padding: 10px;
+    color: $primary-gray-color;
+  }
+}
+
+@include onTabletPortrait {
+  .cardPokemonDetail {
+    margin-top: 100px;
   }
 }

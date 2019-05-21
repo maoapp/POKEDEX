@@ -24,7 +24,6 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
-          
           <div className="container">
             <NavBar />
             <Switch>

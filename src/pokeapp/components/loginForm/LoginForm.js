@@ -9,23 +9,29 @@ import './Form.scss';
 // @assets
 const pokeballImage = require('../../assets/png/pokeball-form.png');
 
-const LoginForm = ({email, password, onChangeEmail, userInvalid, onChangePassword, onSubmitForm}) => (
+const LoginForm = ({email, password, userInvalid, onChangeField, onSubmitForm}) => (
   <React.Fragment> 
-    <div className="formLogin__picture">
-      <img src={pokeballImage} style={{height: 70, width: 70}} alt="pokeball"/>
+    <div className="form__pictureContainer">
+      <img className="form__picture" src={pokeballImage} alt="pokeball"/>
     </div> 
-    <section className="formLogin">
+    <section className="form">
     <h3>Lets start</h3>
       <form>
         <label htmlFor="email">Email</label>
-        <input type="email" value={email} onChange={e => onChangeEmail(e)} required/>
+        <input name="email"  type="email" value={email} onChange={e => onChangeField(e)} required/>
         <label htmlFor="other">Password</label>
-        <input type="password" value={password} onChange={e => onChangePassword(e)}/>
-        <button type="submit" onClick={e => onSubmitForm(e)}>Login</button>
+        <input name="password"  type="password" value={password} onChange={e => onChangeField(e)}/>
+        <button 
+          type="submit" 
+          onClick={e => onSubmitForm(e)} 
+          disabled={!email || !password}
+        >
+          Login
+        </button>
       </form>
       <div>
-        <h5 style={{marginTop: 15}}>If you are not user sing up <NavLink to="register"> here</NavLink></h5>
-        {userInvalid && <h6 className="alert">Correo o contraseña invalidos</h6>}
+        <h5 className="form__registerInfo">If you are not user sing up <NavLink to="register"> here</NavLink></h5>
+        {userInvalid && <h6 className="form__errorMessage">Correo o contraseña invalidos</h6>}
       </div>
     </section>
   </React.Fragment>

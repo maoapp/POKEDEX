@@ -7,7 +7,9 @@ import PokemonDetail from '../pages/PokemonDetail';
 
 const mapStateToProps = ({ pokedexReducer }) => {
 	return {
-    pokemonDetail: pokedexReducer.pokemonDetail
+    pokemonDetail: pokedexReducer.pokemonDetail,
+    isLogged: pokedexReducer.user.isLogged,
+    pokemonEvolutionChain: pokedexReducer.pokemonEvolutionChain
 	};
 };
 

@@ -5,22 +5,22 @@ import React from 'react';
 import RegisterForm from '../components/registerForm/RegisterForm';
 
 class Register extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
         user: {
-          firstName: '',
-          lastName: '',
-          email: '',
+          firstName: props.user.firstName || '',
+          lastName: props.user.lastName || '',
+          email: props.user.email || '',
           password: '',
           confirmPassword: ''
         },
         formErrors: {email: '', password: '', confirmPassword: ''},
-        emailValid: true,
+        emailValid: false,
         formValid: false,
-        passwordValid: true,
-        passwordsMatched: true 
+        passwordValid: false,
+        passwordsMatched: false 
     }
 
     this.goBack = this.goBack.bind(this);
@@ -64,7 +64,7 @@ class Register extends React.Component {
         break;
       case 'confirmPassword':
         fieldValidationErrors.confirmPassword = passwordsMatch ? '' : 'Dont match with password';
-      break;  
+        break;  
       default:
         break;
     }
@@ -80,7 +80,7 @@ class Register extends React.Component {
   onValidateForm() {
     const { emailValid, passwordValid, passwordsMatched, user } = this.state;
     const { firstName, lastName } = user;
-    const validations = emailValid && passwordValid && passwordsMatched && firstName && lastName;
+    const validations = (emailValid || this.props.user.isLogged) && passwordValid && passwordsMatched && firstName && lastName;
 
     this.setState(
       {
@@ -115,6 +115,7 @@ class Register extends React.Component {
             formValid: formValid,
             formErrors,
             goBack: this.goBack,
+            isLogged: this.props.user.isLogged,
             onChangeField: this.onChangeField,
             onSubmitForm: this.onSubmitForm,
             onValidateEmail: this.onValidateEmail,

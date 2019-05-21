@@ -10,13 +10,20 @@ class Login extends React.Component {
     super();
 
     this.state = {
-      email: '',
-      password: ''
+      user: {
+        email: '',
+        password: ''
+      }
     }
 
-    this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    this.onChangeField = this.onChangeField.bind(this);
     this.onSubmitForm = this.onSubmitForm.bind(this);
+  }
+
+  componentDidMount() {
+    const { logout } = this.props;
+    
+    logout();
   }
 
 	componentWillReceiveProps(nextProps) {
@@ -28,39 +35,35 @@ class Login extends React.Component {
 		}
 	}
 
-  onChangeEmail(e) {
-    this.setState({email: e.target.value})
-  }
+  onChangeField(e) {
+    const { user } = this.state;
+    const name = e.target.name;
+    const value = e.target.value;
 
-  onChangePassword(e) {
-    this.setState({password: e.target.value})
+    this.setState({user: {...user, [name]: value}});
   }
 
   onSubmitForm(e) {
     e.preventDefault();
     const { loginRequest } = this.props;
-    const { email, password } = this.state;
-    const user = {
-      email,
-      password
-    }
+    const { user } = this.state;
 
-    loginRequest(user);
+    if(user.email && user.password) {
+      loginRequest(user);
+    }
   };
 
   render() {
-    const { email, password } = this.state;
+    const { user } = this.state;
     const { userInvalid } = this.props;
 
     return (
       <LoginForm 
         {...
           {
-            email, 
-            password, 
+            ...user,
             userInvalid,
-            onChangeEmail: this.onChangeEmail, 
-            onChangePassword: this.onChangePassword,
+            onChangeField: this.onChangeField,
             onSubmitForm: this.onSubmitForm
           }
         }

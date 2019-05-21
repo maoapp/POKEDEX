@@ -8,6 +8,16 @@
     font-weight: bold;
   }
 
+  &__optionsMenu {
+    display: flex;
+    align-items: center;
+  }
+
+  &__optionMenu {
+    color: $white-color;
+    margin-right: 15px;
+  }
+
   &__logo {
     height: 30px;
     width: 30px;
@@ -16,11 +26,28 @@
   &__infoContainer {
     display: flex;
     align-items: center;
+  }
 
-    h6 {
-      color: $white-color;
-      cursor: pointer;
-      margin-right: 8px;
+  &__user {
+    color: $white-color;
+    cursor: pointer;
+    margin-right: 8px;
+  }
+}
+
+@include onTabletPortrait {
+  .navBar {
+
+    &__container {
+      flex-direction: column;
+    }
+
+    &__optionsMenu {
+      flex-direction: column;
+    }
+
+    &__infoContainer {
+      flex-direction: column;
     }
   }
 }

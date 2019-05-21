@@ -2,6 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// @constants
+import { LIMIT } from '../constants/constants';
+
 // @components
 import PokemonCard from '../components/pokemonCard/PokemonCard';
 import Spinner from '../components/spinner/Spinner';
@@ -14,15 +17,18 @@ class Pokemons extends React.Component {
     super();
 
     this.state = {
-      pokemon: ''
+      pokemon: '',
+      pokemonsLimit: LIMIT ,
+      showSpinnerScroll: false
     };
 
+    this.getScrollBottom = this.getScrollBottom.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
     this.renderPokemonList = this.renderPokemonList.bind(this);
     this.selectPokemon = this.selectPokemon.bind(this);
-    // this.handleScroll = this.handleScroll.bind(this);
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { fetchPokemons, isLogged, history } = this.props;
     window.addEventListener('scroll', this.handleScroll);
 
@@ -33,27 +39,42 @@ class Pokemons extends React.Component {
     fetchPokemons();
   }
 
+  handleScroll () {
+    const { fetchPokemons, pokemons } = this.props;
+    const { list } = pokemons;
+    const { pokemonsLimit } = this.state;
+		const isBottomOfScroll = this.getScrollBottom();
+        
+		if(isBottomOfScroll) {
+      fetchPokemons(list + pokemonsLimit);
+    } 
+  }
+  
+  getScrollBottom() {
+		return (window.innerHeight + window.scrollY >= document.body.offsetHeight);
+	}
+
   selectPokemon(id) {
     const { history } = this.props;
 
     history.push(`pokemon/${id}`)
   }
 
-  renderPokemonList(list) {
-    return (
-      <div className="row">
-        {list.map(pokemon => <PokemonCard key={pokemon.name} pokemon={pokemon} onSelectPokemon={this.selectPokemon}/>)}
-      </div>);
-  }
-
   onChange(e) {
     this.setState({pokemon: e.target.value})
+  }
+
+  renderPokemonList(list) {
+    return (
+      <div className="pokemonsContainer__pokemonCardContainer">
+        {list.map(pokemon => <PokemonCard key={pokemon.name} pokemon={pokemon} onSelectPokemon={this.selectPokemon}/>)}
+      </div>);
   }
 
   render() {
     const { pokemons } = this.props;
     const { pokemon } = this.state;
-    const { data } = pokemons;
+    const { data, isLoading } = pokemons;
 
     let content = <Spinner />;
 
@@ -61,7 +82,6 @@ class Pokemons extends React.Component {
       content = this.renderPokemonList(data);
 
       if(pokemon) {
-        // const regex = `/${pokemon}/i`
         const listFiltered = data.filter(item => item.name.match(pokemon));
 
         content = listFiltered.length ? this.renderPokemonList(listFiltered) : <div>no existe ese pokemon</div>
@@ -77,6 +97,7 @@ class Pokemons extends React.Component {
           placeholder="Search by your favorite pokemon"
         />
         <div>{content}</div>
+        {this.getScrollBottom() && isLoading && <Spinner />}
       </div>
     )
   }

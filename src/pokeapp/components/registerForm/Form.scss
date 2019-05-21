@@ -1,6 +1,6 @@
 @import '../../styles/global';
 
-.formLogin {
+.formRegister {
   background-color: #f1f4f4;
   padding: 36px;
   margin: 0px auto;
@@ -15,6 +15,11 @@
     border-radius: 50%;
     position: relative;
     top: 50px;
+  }
+
+  &__pokeball {
+    height: 70px; 
+    width: 70px;
   }
 
   form{
@@ -118,8 +123,17 @@
   } 
 }
 
-@include onTablet {
-  .formLogin {
-    background: red;
+@include onSmallScreen {
+  .formRegister {
+    width: 100%;
+  }
+}
+
+
+@include onCellPhone {
+  .formRegister {
+    padding: 18px;
+    margin: 0px auto;
+    margin-top: 2rem;
   }
 }

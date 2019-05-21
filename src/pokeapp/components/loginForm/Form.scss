@@ -1,6 +1,6 @@
 @import '../../styles/global';
 
-.formLogin{
+.form{
   background-color:#f1f4f4;
   padding: 36px;
   margin: 0px auto;
@@ -8,14 +8,29 @@
   width: 60%;
   max-width: 500px;
 
-  &__picture {
+  &__pictureContainer {
     display: inline-block;
-    background: white;
+    background: $white-color;
     padding: 20px;
     border-radius: 50%;
     position: relative;
     top: 50px;
   }
+
+  &__picture {
+    height: 70px;
+    width: 70px;
+  }
+
+  &__registerInfo {
+    margin-top: 15px;
+  }
+
+  &__errorMessage {
+    font-weight: bold;
+    color: $primary-red-color;
+  }
+
   form{
     flex-direction:column;
     display:flex;
@@ -94,5 +109,27 @@
       box-shadow:0px 1px 3px 0px rgba(0,0,0,0.08);
       border-bottom:4px solid $secondary-red-color;
     }
+
+    &:disabled {
+      cursor: auto;
+      background-color: $silver-gray-color;
+      border-color: $dark-gray-color;
+      transform: none;
+    }
   }
 }
+
+@include onSmallScreen {
+  .form {
+    width: 100%;
+  }
+}
+
+@include onCellPhone {
+  .form {
+    padding: 18px;
+    margin: 0px auto;
+    margin-top: 2rem;
+  }
+}
+

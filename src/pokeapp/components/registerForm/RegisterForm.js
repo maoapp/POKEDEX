@@ -19,18 +19,19 @@ const RegisterForm = (
     formErrors,
     formValid,
     goBack,
+    isLogged,
     lastName, 
     onChangeField,
     onSubmitForm,
     password
   }) => (
   <React.Fragment>
-    <div className="formLogin__picture">
-      <img src={pokeballImage} style={{height: 70, width: 70}} alt="pokeball__form"/>
+    <div className="formRegister__picture">
+      <img src={pokeballImage} className="formRegister__pokeball" alt="pokeball"/>
     </div> 
-    <section className="formLogin">
-      <h3>Sing up to be a new pokemon trainer</h3>
-      {!formValid && <h6 style={{color: '#db4439'}}>All fields are mandatories</h6>}
+    <section className="formRegister">
+      <h3>{!isLogged ? `Sing up to be a new pokemon trainer` : 'Welcome to edit form'}</h3>
+      {!formValid && !isLogged && <h6 style={{color: '#db4439'}}>All fields are mandatories</h6>}
       <form>
         <label htmlFor="first name">* First Name</label>
         <input 
@@ -52,6 +53,7 @@ const RegisterForm = (
           type="email" 
           value={email} 
           onChange={e => onChangeField(e)}
+          disabled={isLogged}
           required 
         />
         <label htmlFor="password">* Password</label>
@@ -67,10 +69,16 @@ const RegisterForm = (
           type="password" 
           value={confirmPassword} 
           onChange={e => onChangeField(e)}
-          disabled={!password.length && !confirmPassword}
+          disabled={!password && !confirmPassword}
         />
         <ErrorsForm errors={formErrors}/>
-        <button type="submit" onClick={e => onSubmitForm(e)} disabled={!formValid}>Sing up</button>
+        <button 
+          type="submit" 
+          onClick={e => onSubmitForm(e)} 
+          disabled={!formValid
+        }>
+          {!isLogged ? `Sing up` : 'Update'}
+        </button>
         <button className="close" onClick={() => goBack()}>Cancel</button>
       </form>
     </section>
