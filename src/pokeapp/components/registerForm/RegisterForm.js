@@ -79,7 +79,7 @@ const RegisterForm = (
         }>
           {!isLogged ? `Sing up` : 'Update'}
         </button>
-        <button className="close" onClick={() => goBack()}>Cancel</button>
+        {!isLogged && <button className="close" onClick={() => goBack()}>Cancel</button>}
       </form>
     </section>
   </React.Fragment>  
