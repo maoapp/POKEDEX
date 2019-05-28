@@ -1,9 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions/pokedex';
+import * as Actions from 'actions/pokedex';
 
-import NavBar from '../components/navBar/NavBar';
+import NavBar from 'components/navBar/NavBar';
 
 const mapStateToProps = ({ pokedexReducer }) => {
 	return {

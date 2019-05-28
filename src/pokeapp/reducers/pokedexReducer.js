@@ -12,7 +12,7 @@ import {
   REQUEST_POKEMON_EVOLUTION_CHAIN,
   REQUEST_POKEMON_EVOLUTION_CHAIN_SUCCESSFUL,
   REQUEST_POKEMON_EVOLUTION_CHAIN_FAILURE
-} from '../constants/actionTypes';
+} from 'constants/actionTypes';
 
 const initialState = {
   user: {

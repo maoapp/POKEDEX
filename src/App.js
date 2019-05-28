@@ -4,18 +4,18 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import AppReducer from './pokeapp/reducers';
+import AppReducer from 'reducers';
 
 //@style
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 // @Components
-import Login from './pokeapp/containers/Login';
-import Register from './pokeapp/containers/Register';
-import NavBar from './pokeapp/containers/Navbar';
-import PokemonDetail from './pokeapp/containers/PokemonDetail';
-import Layout from './pokeapp/containers/Pokemons'; 
+import Login from 'containers/Login';
+import Register from 'containers/Register';
+import NavBar from 'containers/Navbar';
+import PokemonDetail from 'containers/PokemonDetail';
+import Layout from 'containers/Pokemons'; 
 
 const store = createStore(AppReducer, applyMiddleware(thunk));
 

@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // @components
-import LoginForm from '../components/loginForm/LoginForm';
+import LoginForm from 'components/loginForm/LoginForm';
 
 class Login extends React.Component {
   constructor() {

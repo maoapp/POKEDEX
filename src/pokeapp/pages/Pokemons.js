@@ -3,11 +3,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // @constants
-import { LIMIT } from '../constants/constants';
+import { LIMIT } from 'constants/constants';
 
 // @components
-import PokemonCard from '../components/pokemonCard/PokemonCard';
-import Spinner from '../components/spinner/Spinner';
+import PokemonCard from 'components/pokemonCard/PokemonCard';
+import Spinner from 'components/spinner/Spinner';
 
 // @styles
 import './Pokemons.scss';

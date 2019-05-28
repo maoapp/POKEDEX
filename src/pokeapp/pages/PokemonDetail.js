@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // @components
-import PokemonDetailCard from '../components/pokemonDetailCard/PokemonDetailCard';
-import Spinner from '../components/spinner/Spinner';
+import PokemonDetailCard from 'components/pokemonDetailCard/PokemonDetailCard';
+import Spinner from 'components/spinner/Spinner';
 
 class PokemonDetail extends React.Component {
   componentDidMount() {

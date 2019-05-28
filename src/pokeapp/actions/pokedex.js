@@ -17,10 +17,10 @@ import {
   REQUEST_POKEMON_EVOLUTION_CHAIN,
   REQUEST_POKEMON_EVOLUTION_CHAIN_SUCCESSFUL,
   REQUEST_POKEMON_EVOLUTION_CHAIN_FAILURE
-} from '../constants/actionTypes';
+} from 'constants/actionTypes';
 
 // @constants
-import { API_URL, ENDPOINTS, LIMIT } from '../constants/constants';
+import { API_URL, ENDPOINTS, LIMIT } from 'constants/constants';
 
 const registerUser = user => dispatch => {
   dispatch({

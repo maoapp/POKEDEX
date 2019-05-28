@@ -2,7 +2,7 @@
 import React from 'react';
 
 // @components
-import RegisterForm from '../components/registerForm/RegisterForm';
+import RegisterForm from 'components/registerForm/RegisterForm';
 
 class Register extends React.Component {
   constructor(props) {

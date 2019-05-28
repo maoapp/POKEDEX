@@ -1,9 +1,9 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as Actions from '../actions/pokedex';
+import * as Actions from 'actions/pokedex';
 
-import Login from '../pages/Login';
+import Login from 'pages/Login';
 
 const mapStateToProps = ({ pokedexReducer }) => {
 	return {
